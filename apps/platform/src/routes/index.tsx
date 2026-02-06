@@ -1,7 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-export const Route = createFileRoute("/")({ component: App });
+import { api } from "./-server";
+export const Route = createFileRoute("/")({
+  loader: async () => {
+    return (await api.users.$get()).json()
+  },
+  component: App
+});
 
 function App() {
-  return <div></div>;
+  const { users } = Route.useLoaderData()
+  return <div>
+    {JSON.stringify(users)}
+  </div>;
 }

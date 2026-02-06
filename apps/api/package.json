@@ -2,12 +2,14 @@
 	"name": "api",
 	"type": "module",
 	"scripts": {
-		"dev": "tsx watch src/index.ts",
+		"dev": "pnpm with-env tsx watch src/index.ts",
 		"build": "tsc",
 		"start": "node dist/src/index.js",
 		"db:generate": "prisma generate",
-		"db:migrate": "prisma migrate dev",
-		"db:deploy": "prisma deploy"
+		"db:migrate": "pnpm with-env prisma migrate dev",
+		"db:deploy": "prisma deploy",
+		"db:studio": "prisma studio",
+		"with-env": "dotenv -e ../../.env --"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.9",

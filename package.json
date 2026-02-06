@@ -4,13 +4,16 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"prepare": "husky",
-		"lint": "biome lint",
-		"dev": "pnpm -r --parallel dev",
+		"dev": "concurrently \"pnpm --filter api dev\" \"pnpm --filter platform dev\" --names \"API,WEB\" --prefix-colors \"blue,magenta\" --kill-others",
+		"dev:api": "pnpm --filter api dev",
+		"dev:platform": "pnpm --filter platform dev",
 		"db:migrate": "pnpm --filter api run db:migrate",
 		"db:generate": "pnpm --filter api run db:generate",
-		"db:deploy": "pnpm --filter api run db:deploy"
+		"db:deploy": "pnpm --filter api run db:deploy",
+		"db:studio": "pnpm --filter api run db:studio",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky",
+		"lint": "biome lint"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,6 +21,10 @@
 	"packageManager": "pnpm@10.28.2",
 	"devDependencies": {
 		"@biomejs/biome": "2.3.13",
+		"concurrently": "^9.2.1",
 		"husky": "^9.1.7"
+	},
+	"dependencies": {
+		"dotenv-cli": "^11.0.0"
 	}
 }
