@@ -1,0 +1,22 @@
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "P@ssw0rd2315" ,
+    "confirm_password": "P@ssw0rd2315" ,
+    "username": "admin",
+    "name": "admin"
+}
+###
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "P@ssw0rd2315" 
+}
+
+###
+GET http://localhost:8000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsiaWQiOiIwMTljMzQzNS03NTFkLTc1YzgtOTVlOS0yOTQxOTJlM2E4OGMiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4ifSwiZXhwIjoxNzcwNDA0NDQ1fQ.N20jFv-kERBBcUl7ppZFibrYQJGe_TQIO16nB5KsQd8

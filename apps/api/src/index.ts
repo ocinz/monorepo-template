@@ -1,10 +1,21 @@
+import "dotenv/config";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
+import { authMiddleware } from "./middlewares/auth.js";
+import { authRoute } from "./modules/auth.js";
 import { prisma } from "./utils/prisma.js";
-import "dotenv/config";
 
 const app = new Hono()
+  .use(logger())
+  .use(cors())
+  .route("/auth", authRoute)
+  .use(authMiddleware)
   .get("/", (c) => {
+    const payload = c.get("jwtPayload");
+    console.log({ yow: payload });
+
     return c.text("Hello Hono!");
   })
   .get("/users", async (c) => {
