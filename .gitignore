@@ -15,3 +15,7 @@ count.txt
 todos.json
 
 docker-compose.dev.yml
+
+# moon
+.moon/cache
+.moon/docker

@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "concurrently \"pnpm --filter api dev\" \"pnpm --filter platform dev\" --names \"API,WEB\" --prefix-colors \"blue,magenta\" --kill-others",
+		"dev": "pnpm --parallel --workspace-concurrency=3 --filter=api --filter=platform run dev",
 		"dev:api": "pnpm --filter api dev",
 		"dev:platform": "pnpm --filter platform dev",
 		"db:migrate": "pnpm --filter api run db:migrate",
@@ -20,7 +20,7 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.28.2",
 	"devDependencies": {
-		"@biomejs/biome": "2.3.13",
+		"@biomejs/biome": "2.3.14",
 		"concurrently": "^9.2.1",
 		"husky": "^9.1.7"
 	},
