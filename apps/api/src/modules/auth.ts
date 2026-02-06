@@ -2,7 +2,6 @@ import { zValidator } from "@hono/zod-validator";
 import bcrypt from "bcrypt";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { jwt, sign } from "hono/jwt";
 import { Jwt } from "hono/utils/jwt";
 import z from "zod";
 import { prisma } from "../utils/prisma.js";
